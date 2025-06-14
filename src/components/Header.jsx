@@ -8,13 +8,11 @@ export default function Header() {
                 <img
                     src={chefImage}
                     alt="Chef icon"
-                    style={{ width: '50px', height: '50px' }}
                 />
                 <h1>Recipe Generator</h1>
                 <img
                     src={chefImage1}
                     alt="Chef icon"
-                    style={{ width: '50px', height: '50px' }}
                 />
             </div>
         </header>
