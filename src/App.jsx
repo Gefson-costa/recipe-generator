@@ -8,7 +8,7 @@ export default function App() {
     const [recipe, setRecipe] = useState(["potato", "tomato", "cheese"])
 
     const listOfIngredients = recipe.map((item) => {
-        return <li>{item}</li>
+        return <span>{item}</span>
     })
 
 
@@ -36,35 +36,42 @@ export default function App() {
         <main>
             <Header />
 
-            <section>
-                <form action="" onSubmit={handleSubmit}>
-                    <label for="ingredient-input"></label>
-                    <input
-                        id="ingredient-input"
-                        type="text"
-                        placeholder=""
-                        name="items"
-                    />
-                    <button>Add ingredient</button>
-                </form>
-            </section>
+            <section className="main-container">
+                <section className="left-con">
+                    <form action="" onSubmit={handleSubmit}>
 
-            <section>
-                <div className="ingredients-con">
-                    <ul>
+                        <label for="ingredient-input"></label>
+                        <input
+                            id="ingredient-input"
+                            type="text"
+                            placeholder=""
+                            name="items"
+                        />
+                        <button>Add ingredient</button>
+                    </form>
+
+
+                    <div className="ingredients-con">
                         {listOfIngredients}
-                    </ul>
-                </div>
-            </section>
-            {recipe.length > 4 &&
-                <sections>
-                    <div className="ready-con">
-                        <p>Lorem ipsum dolor sstrum provident iure eligendi fugiat
-                            a placeat dignissimos assumenda vel, fugit corrupti eum?
-                            Enim nihil eos eum sunt at.</p>
-                        <button>Ready</button>
                     </div>
-                </sections>}
+
+
+
+                    {recipe.length > 4 &&
+                        <sections>
+                            <div className="ready-con">
+                                <p>Lorem ipsum dolor sstrum provident iure eligendi fugiat
+                                    a placeat dignissimos assumenda vel, fugit corrupti eum?
+                                    Enim nihil eos eum sunt at.</p>
+                                <button>Ready</button>
+                            </div>
+                        </sections>}
+                </section>
+                <section className="right-con">
+
+                </section>
+
+            </section>
         </main>
     )
 }
