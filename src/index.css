@@ -18,6 +18,7 @@ body {
 .header-container {
   display: flex;
   justify-content: flex-start;
+  margin-left: 20px;
 }
 
 .header-container h1 {
@@ -67,15 +68,7 @@ form button:active {
   transition: all .4s ease-in-out;
 }
 
-.listOfIngredient-con {
-  transform: translateY(0) scale(1);
-  transition: all .4s ease-in-out;
-}
 
-.listOfIngredient-con::before {
-  transform: translateY(-100%) scale(0);
-  transition: all .4s ease-in-out;
-}
 
 .listOfIngredient-con h2 {
   text-align: center;
@@ -90,13 +83,14 @@ form button:active {
 
 
 .ingredients-con {
-  background-color: black;
+  background: url('images/food.jpg');
+  background-size: cover;
   color: white;
   display: flex;
   flex-direction: column;
   margin-left: 20px;
   margin-top: 0;
-  max-height: 300px;
+  max-height: 200px;
   overflow-y: auto;
   border: 2px solid #0f0d0d;
   padding: 10px;
@@ -118,7 +112,12 @@ form button:active {
 
 .ingredients-con span {
   font-size: 1.5rem;
-  margin-bottom: .6rem;
+  margin-bottom: .8rem;
+  border-radius: 4px;
+  background-color: rgba(248, 248, 248, 0.85);
+  color: #333333;
+  width: 50%;
+  word-wrap: break-word
 }
 
 .ready-con {
@@ -130,6 +129,7 @@ form button:active {
   box-shadow: 0px 4px 8px black;
   margin-top: 20px;
   margin-left: 20px;
+  position: relative;
 }
 
 .ready-con button {
@@ -144,6 +144,9 @@ form button:active {
   width: 10rem;
   height: 4rem;
   margin-top: .9rem;
+  position: absolute;
+  right: 3%;
+  bottom: 20%;
 }
 
 .ready-con button:active {
@@ -151,12 +154,9 @@ form button:active {
   transition: all .4s ease-in-out;
 }
 
-.cona {
-  transition: all duration-500 ease-in-out;
-
-}
 
 /* Adicione isso no seu arquivo CSS */
+
 .fade-transition {
   transition: all 0.5s ease-in-out;
 }

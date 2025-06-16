@@ -67,15 +67,15 @@ export default function App() {
                         </div>
                     </FadeTransition>
 
-                    {recipe.length > 4 &&
+                    <FadeTransition show={recipe.length > 4}>
                         <section>
                             <div className="ready-con">
-                                <p>Lorem ipsum dolor sstrum provident iure eligendi fugiat
-                                    a placeat dignissimos assumenda vel, fugit corrupti eum?
-                                    Enim nihil eos eum sunt at.</p>
+                                <p>Are you ready for the recipe.</p>
                                 <button>Ready</button>
                             </div>
-                        </section>}
+                        </section>
+                    </FadeTransition>
+
                 </section>
                 <section className="right-con">
 
