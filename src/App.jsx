@@ -5,7 +5,7 @@ import Header from "./components/Header"
 
 export default function App() {
 
-    const [recipe, setRecipe] = useState(["potato", "tomato", "cheese"])
+    const [recipe, setRecipe] = useState([])
 
     const listOfIngredients = recipe.map((item) => {
         return <span>{item}</span>
@@ -39,7 +39,6 @@ export default function App() {
             <section className="main-container">
                 <section className="left-con">
                     <form action="" onSubmit={handleSubmit}>
-
                         <label for="ingredient-input"></label>
                         <input
                             id="ingredient-input"
@@ -50,12 +49,14 @@ export default function App() {
                         <button>Add ingredient</button>
                     </form>
 
+                    {recipe.length > 0 &&
+                        <div className="listOfIngredient-con">
+                            <h2>List Of Ingredient</h2>
+                            <div className="ingredients-con">
 
-                    <div className="ingredients-con">
-                        {listOfIngredients}
-                    </div>
-
-
+                                {listOfIngredients}
+                            </div>
+                        </div>}
 
                     {recipe.length > 4 &&
                         <sections>

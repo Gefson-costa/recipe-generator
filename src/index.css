@@ -40,7 +40,7 @@ img {
 }
 
 form {
-
+  margin-left: 20px;
   display: flex;
   justify-content: flex-start;
 }
@@ -67,15 +67,53 @@ form button:active {
   transition: all .4s ease-in-out;
 }
 
+.listOfIngredient-con {
+  transform: translateY(0) scale(1);
+  transition: all .4s ease-in-out;
+}
+
+.listOfIngredient-con::before {
+  transform: translateY(-100%) scale(0);
+  transition: all .4s ease-in-out;
+}
+
+.listOfIngredient-con h2 {
+  text-align: center;
+  border: 2px solid black;
+  padding: 2rem;
+  width: 80%;
+  margin-left: 20px;
+  margin-bottom: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 
 
 .ingredients-con {
+  background-color: black;
+  color: white;
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-  margin-top: 20px;
-  max-height: 200px;
-  flex-wrap: wrap;
+  margin-top: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 2px solid #0f0d0d;
+  padding: 10px;
+  width: 80%;
+  padding: 0 2rem;
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.ingredients-con::-webkit-scrollbar {
+  width: 10px;
+}
+
+.ingredients-con::-webkit-scrollbar-thumb {
+  background-color: red;
+  border-radius: 10px;
 }
 
 .ingredients-con span {
@@ -96,7 +134,7 @@ form button:active {
 
 .ready-con button {
   background-color: rgb(212, 189, 15);
-  border-radius: 6px;
+  border-radius: 10px;
   color: white;
   padding: .5rem;
   box-shadow: 0px 4px 8px black;
