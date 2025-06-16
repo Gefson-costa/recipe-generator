@@ -150,3 +150,24 @@ form button:active {
   transform: translateY(0);
   transition: all .4s ease-in-out;
 }
+
+.cona {
+  transition: all duration-500 ease-in-out;
+
+}
+
+/* Adicione isso no seu arquivo CSS */
+.fade-transition {
+  transition: all 0.5s ease-in-out;
+}
+
+.fade-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-hide {
+  opacity: 0;
+  transform: translateY(-16px);
+  pointer-events: none;
+}

@@ -1,7 +1,16 @@
 
-
 import React, { useState } from "react"
 import Header from "./components/Header"
+
+
+
+const FadeTransition = ({ show, children }) => {
+    return (
+        <div className={`fade-transition ${show ? 'fade-show' : 'fade-hide'}`}>
+            {children}
+        </div>
+    );
+};
 
 export default function App() {
 
@@ -49,24 +58,24 @@ export default function App() {
                         <button>Add ingredient</button>
                     </form>
 
-                    {recipe.length > 0 &&
+                    <FadeTransition show={recipe.length > 0}> {/* Mudei para 0 para testar */}
                         <div className="listOfIngredient-con">
                             <h2>List Of Ingredient</h2>
                             <div className="ingredients-con">
-
                                 {listOfIngredients}
                             </div>
-                        </div>}
+                        </div>
+                    </FadeTransition>
 
                     {recipe.length > 4 &&
-                        <sections>
+                        <section>
                             <div className="ready-con">
                                 <p>Lorem ipsum dolor sstrum provident iure eligendi fugiat
                                     a placeat dignissimos assumenda vel, fugit corrupti eum?
                                     Enim nihil eos eum sunt at.</p>
                                 <button>Ready</button>
                             </div>
-                        </sections>}
+                        </section>}
                 </section>
                 <section className="right-con">
 
@@ -76,3 +85,5 @@ export default function App() {
         </main>
     )
 }
+
+
