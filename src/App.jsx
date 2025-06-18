@@ -17,10 +17,8 @@ export default function App() {
     const [recipe, setRecipe] = useState([])
 
     const listOfIngredients = recipe.map((item) => {
-        return <span>{item}</span>
+        return <span key={item}>{item}</span>
     })
-
-
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -48,19 +46,19 @@ export default function App() {
             <section className="main-container">
                 <section className="left-con">
                     <form action="" onSubmit={handleSubmit}>
-                        <label for="ingredient-input"></label>
+                        <label htmlFor="ingredient-input"></label>
                         <input
                             id="ingredient-input"
                             type="text"
-                            placeholder=""
+                            placeholder="Enter an ingredient"
                             name="items"
                         />
                         <button>Add ingredient</button>
                     </form>
 
-                    <FadeTransition show={recipe.length > 0}> {/* Mudei para 0 para testar */}
+                    <FadeTransition show={recipe.length > 0}>
                         <div className="listOfIngredient-con">
-                            <h2>List Of Ingredient</h2>
+                            <h2>List of Ingredients</h2>
                             <div className="ingredients-con">
                                 {listOfIngredients}
                             </div>
@@ -77,13 +75,9 @@ export default function App() {
                     </FadeTransition>
 
                 </section>
-                <section className="right-con">
-
-                </section>
+                {/* Right section reserved for future features */}
 
             </section>
         </main>
     )
 }
-
-
