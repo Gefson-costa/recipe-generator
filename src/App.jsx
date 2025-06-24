@@ -1,8 +1,10 @@
 
-import React, { useState } from "react"
-import Header from "./components/Header"
 
 
+
+
+import React, { useState } from 'react';
+import CookingAnimation from './components/CookingAnimation';
 
 const FadeTransition = ({ show, children }) => {
     return (
@@ -13,6 +15,7 @@ const FadeTransition = ({ show, children }) => {
 };
 
 export default function App() {
+    const [cookingInProgress, setCookingInProgress] = useState(false);
 
     const [recipe, setRecipe] = useState([])
 
@@ -33,6 +36,7 @@ export default function App() {
         setRecipe((item) => {
             return [...item, input]
         })
+        setCookingInProgress(true);
         el.reset()
     }
 
@@ -69,14 +73,17 @@ export default function App() {
                         <section>
                             <div className="ready-con">
                                 <p>Are you ready for the recipe.</p>
-                                <button>Ready</button>
+                                <button onClick={() => setCookingInProgress(false)}>Ready</button>
                             </div>
                         </section>
                     </FadeTransition>
 
                 </section>
-                {/* Right section reserved for future features */}
-
+                <section className="right-con">
+                    <FadeTransition show={cookingInProgress}>
+                        <CookingAnimation />
+                    </FadeTransition>
+                </section>
             </section>
         </main>
     )

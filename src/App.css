@@ -1,0 +1,300 @@
+/* Cooking animation styles */
+.cooking-animation {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    transition: all 0.5s ease;
+}
+
+.pot {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 80px;
+    transition: all 0.3s ease;
+}
+
+.pot-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 60px;
+    background-color: #8B4513;
+    border-radius: 10px 10px 40px 40px;
+}
+
+.pot-handle {
+    position: absolute;
+    top: 20px;
+    left: -10px;
+    width: 20px;
+    height: 40px;
+    background-color: #A0522D;
+    border-radius: 10px 0 0 10px;
+}
+
+.steam {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    width: 10px;
+    height: 20px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    opacity: 0.8;
+    animation: steamAnimation 2s infinite ease-in-out;
+    filter: blur(1px);
+    transition: all 0.3s ease;
+}
+
+.steam2 {
+    left: 45%;
+    animation-delay: 0.5s;
+}
+
+.steam3 {
+    left: 55%;
+    animation-delay: 1s;
+}
+
+@keyframes steamAnimation {
+    0% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+}
+
+.bubbles {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bubble {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    animation: bubbleAnimation 1.5s infinite ease-in-out;
+    filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.7));
+    transition: all 0.3s ease;
+}
+
+.bubble:nth-child(2) {
+    left: 20px;
+    animation-delay: 0.5s;
+}
+
+.bubble:nth-child(3) {
+    left: -20px;
+    animation-delay: 1s;
+}
+
+@keyframes bubbleAnimation {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+}
+
+/* New animation elements */
+.chef-animation {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: chefAnimation 3s infinite ease-in-out;
+    z-index: 2;
+}
+
+@keyframes chefAnimation {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-10px) rotate(5deg);
+    }
+}
+
+.kitchen-tools {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.knife,
+.spoon,
+.fork {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: floatTool 4s infinite ease-in-out;
+}
+
+.knife {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23A9A9A9"><path d="M20.34 3.66L3.66 20.34l1.42 1.42L21.76 5.08zM15.54 2.46L13.41.33 12 1.74l2.12 2.12zM9.47 4.55l-4.6 4.6-1.42-1.42 4.6-4.6z"/></svg>');
+    top: 30%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.spoon {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23A9A9A9"><path d="M12 2c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2s2-.9 2-2V4c0-1.1-.9-2-2-2zm0 7c-2.8 0-5 2.2-5 5v5h10v-5c0-2.8-2.2-5-5-5z"/></svg>');
+    top: 40%;
+    left: 70%;
+    animation-delay: 1s;
+}
+
+.fork {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23A9A9A9"><path d="M11 2v8h2V2zm0 12v8h2v-8zm8-6v2h-5v2h5v2l3-3z"/></svg>');
+    top: 60%;
+    left: 30%;
+    animation-delay: 2s;
+}
+
+@keyframes floatTool {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(10deg);
+    }
+}
+
+.ingredients {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.ingredient {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    animation: floatIngredient 5s infinite ease-in-out;
+}
+
+.tomato {
+    background-color: #ff6347;
+    top: 20%;
+    left: 80%;
+    box-shadow: 0 0 10px rgba(255, 99, 71, 0.5);
+}
+
+.onion {
+    background-color: #9370db;
+    top: 50%;
+    left: 10%;
+    box-shadow: 0 0 10px rgba(147, 112, 219, 0.5);
+}
+
+.carrot {
+    background-color: #ffa500;
+    top: 70%;
+    left: 60%;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+}
+
+@keyframes floatIngredient {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(15deg);
+    }
+}
+
+/* Layout adjustments */
+.main-container {
+    display: flex;
+    width: 100%;
+}
+
+.left-con,
+.right-con {
+    flex: 1;
+    padding: 20px;
+}
+
+.right-con {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-placeholder {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* Existing styles */
+.fade-transition {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-show {
+    opacity: 1;
+}
+
+.fade-hide {
+    opacity: 0;
+    display: none;
+}
+
+.listOfIngredient-con {
+    margin-top: 20px;
+}
+
+.ingredients-con {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ingredients-con span {
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.ready-con {
+    margin-top: 20px;
+}
