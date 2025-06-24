@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import CookingAnimation from './components/CookingAnimation';
+import Header from './components/Header';
 
 const FadeTransition = ({ show, children }) => {
     return (
@@ -15,29 +16,57 @@ const FadeTransition = ({ show, children }) => {
 };
 
 export default function App() {
-    const [cookingInProgress, setCookingInProgress] = useState(false);
-
+    const [cookingInProgress, setCookingInProgress] = useState(true);
     const [recipe, setRecipe] = useState([])
+    const [inputValue, setInputValue] = useState("")
 
-    const listOfIngredients = recipe.map((item) => {
-        return <span key={item}>{item}</span>
+    const listOfIngredients = recipe.map((item, index) => {
+        return (
+            <span key={`${item}-${index}`} className="ingredient-tag">
+                {item}
+                <button
+                    className="remove-ingredient"
+                    onClick={() => removeIngredient(index)}
+                    aria-label={`Remove ${item}`}
+                >
+                    ×
+                </button>
+            </span>
+        )
     })
 
     function handleSubmit(event) {
         event.preventDefault()
-        const el = event.currentTarget
-        const formData = new FormData(el)
-        const input = formData.get('items').trim()
+        const input = inputValue.trim().toLowerCase()
 
         if (input === "") {
             return
         }
 
-        setRecipe((item) => {
-            return [...item, input]
+        // Prevent duplicate ingredients
+        if (recipe.some(ingredient => ingredient.toLowerCase() === input)) {
+            setInputValue("")
+            return
+        }
+
+        setRecipe((prevRecipe) => {
+            return [...prevRecipe, inputValue.trim()]
         })
         setCookingInProgress(true);
-        el.reset()
+        setInputValue("")
+    }
+
+    function removeIngredient(indexToRemove) {
+        setRecipe(prevRecipe => prevRecipe.filter((_, index) => index !== indexToRemove))
+        if (recipe.length <= 1) {
+            setCookingInProgress(true)
+        }
+    }
+
+    function clearAllIngredients() {
+        setRecipe([])
+        setCookingInProgress(true)
+        setInputValue("")
     }
 
 
@@ -49,20 +78,47 @@ export default function App() {
 
             <section className="main-container">
                 <section className="left-con">
-                    <form action="" onSubmit={handleSubmit}>
-                        <label htmlFor="ingredient-input"></label>
-                        <input
-                            id="ingredient-input"
-                            type="text"
-                            placeholder="Enter an ingredient"
-                            name="items"
-                        />
-                        <button>Add ingredient</button>
-                    </form>
+                    <div className="form-section">
+                        <div className="progress-indicator">
+                            <div className="progress-text">
+                                <span>Ingredients: {recipe.length}/5</span>
+                                <span className="progress-label">
+                                    {recipe.length < 5 ? `${5 - recipe.length} more needed` : 'Ready to cook!'}
+                                </span>
+                            </div>
+                            <div className="progress-bar">
+                                <div
+                                    className="progress-fill"
+                                    style={{ width: `${Math.min((recipe.length / 5) * 100, 100)}%` }}
+                                ></div>
+                            </div>
+                        </div>
+
+                        <form action="" onSubmit={handleSubmit}>
+                            <label htmlFor="ingredient-input"></label>
+                            <input
+                                id="ingredient-input"
+                                type="text"
+                                placeholder="Enter an ingredient"
+                                value={inputValue}
+                                onChange={(e) => setInputValue(e.target.value)}
+                            />
+                            <button type="submit">Add ingredient</button>
+                        </form>
+                    </div>
 
                     <FadeTransition show={recipe.length > 0}>
                         <div className="listOfIngredient-con">
-                            <h2>List of Ingredients</h2>
+                            <div className="ingredients-header">
+                                <h2>List of Ingredients</h2>
+                                <button
+                                    className="clear-all-btn"
+                                    onClick={clearAllIngredients}
+                                    title="Clear all ingredients"
+                                >
+                                    Clear All
+                                </button>
+                            </div>
                             <div className="ingredients-con">
                                 {listOfIngredients}
                             </div>
@@ -80,9 +136,14 @@ export default function App() {
 
                 </section>
                 <section className="right-con">
-                    <FadeTransition show={cookingInProgress}>
+                    {cookingInProgress ? (
                         <CookingAnimation />
-                    </FadeTransition>
+                    ) : (
+                        <div className="recipe-placeholder">
+                            <h2>Recipe Generated!</h2>
+                            <p>Your delicious recipe is ready to be prepared</p>
+                        </div>
+                    )}
                 </section>
             </section>
         </main>
