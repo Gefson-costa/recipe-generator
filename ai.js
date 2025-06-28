@@ -5,7 +5,7 @@ const SYSYEM_PROMPT = "You are an assistant that receives a list of ingredients 
 
 const anthropic = new Anthropic({
 
-    apiKey: "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",
+    apiKey: import.meta.API_KEY,
     dangerouslyAllowBrowser: true
 })
 
