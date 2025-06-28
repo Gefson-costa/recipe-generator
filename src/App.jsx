@@ -1,11 +1,13 @@
+/* eslint-disable no-unused-vars */
 
 
 
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CookingAnimation from './components/CookingAnimation';
 import Header from './components/Header';
+import { getRecipeFromChefClaude } from '../ai'
 
 const FadeTransition = ({ show, children }) => {
     return (
@@ -19,6 +21,11 @@ export default function App() {
     const [cookingInProgress, setCookingInProgress] = useState(true);
     const [recipe, setRecipe] = useState([])
     const [inputValue, setInputValue] = useState("")
+
+
+    useEffect(() => {
+        
+    })
 
     const listOfIngredients = recipe.map((item, index) => {
         return (
